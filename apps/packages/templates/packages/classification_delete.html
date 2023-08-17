@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mb-6">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="font-weight-bold heading text-primary mb-6">Eliminar Clase</h2>
+        </div>
+        <div class="col-md-3 mt-3">
+            <div class="card">
+                <a href="{% url 'classification_list' %}" class="m-2 btn btn-dark btn-sm">Regresar</a>
+            </div>
+        </div>   
+        <div class="col-md-4">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <p>La Clase fué eliminada</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

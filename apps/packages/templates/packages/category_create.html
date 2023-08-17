@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1 class="text-center my-3">Agregar Destino</h1>
+    <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="card bg-dark text-white">
+              <div class="card-body">
+                <form method="POST" action="{% url 'category_create' %}" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <p>{{ form }}</p>
+                  {% for error in field.errors %}
+                  <p class="alarma">{{error}}</p>
+                  {% endfor %}
+                  {% for error in form.non_field_errors %}
+                  <p class="alarma">{{error}}</p>
+                  {% endfor %}
+                  <div class="modal-footer bg-white">
+                      <button type="submit" class="btn btn-success">Agregar</button>
+                  </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

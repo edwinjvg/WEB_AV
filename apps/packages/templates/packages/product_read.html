@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mb-4">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="font-weight-bold heading text-primary mb-6">Detalle Producto</h2>
+            </div>
+            <div class="col-md-3 mt-3">
+                <div class="card">
+                    <a href="{% url 'product_list' %}" class="m-2 btn btn-dark btn-sm">Regresar</a>
+                    <a href="{% url 'product_update' products.id %}" class="m-2 btn btn-success btn-sm">Editar</a>
+                    <a href="{% url 'product_delete' products.id %}" class="m-2 btn btn-danger btn-sm">Eliminar</a>
+            </div>
+        </div>   
+            <div class="col-md-4">
+                <div style="height: 90vh">
+                    <img class="img-fluid text-center" style="max-width: 100%; max-height: 100%" src="{{ products.image.url }}" alt="">
+                    <h5 class="text-muted">Producto: {{ products.title }}</h5>
+                    <small>Contenido: {{ products.content }}</small><br>
+                </div>
+            </div>
+        </div>   
+    </div>
+{% endblock %}

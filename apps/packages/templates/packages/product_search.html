@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if query %}
+<div class="col-12">
+    <div class="row">
+        {% if products %}
+        <h1 class="text-center">Su Consulta "{{query}}"</h1>
+        {% for products in products %}
+        <div class="col-md-4">
+            <div class="card my-2">
+                <a href=""><img src="{{ products.image.url }}" class="card-img-top" style="height:275px" /></a>
+            <div class="card-body">
+                <h4 class="card-text">{{ products.title }}</h4>
+                <h4 class="card-text">{{ products.category }}</h4>
+                <h4 class="card-text">{{ products.classification }}</h4>
+            </div>
+                <a href="{% url 'product_read' products.id %}" class="m-2 btn btn-outline-dark btn-sm">Ver Mas</a>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h3 class="text-center">Lo sentimos, no hay resultados para su búsqueda"{{query}}"</h3>
+        {% endif %}
+    </div>
+</div>
+{% else %}
+<h1 class="text-center my-5">Favor hacer una Consulta</h1>
+{% endif %}
+{% endblock content %}

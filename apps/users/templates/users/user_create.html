@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+
+ {% block content %}  
+<head>
+	<title>Login</title>
+	<style>
+
+    .gradient-custom-4 {
+    background: #9faca4;
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+    background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+  }
+	</style>
+</head>
+<body>
+<section class="mainclass">
+  <div class="container py-4 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-4 text-center">
+            <h3 class="mb-4"><b>Registrate</b></h3>
+            <form method="POST" novalidate>
+              {% csrf_token %}
+              {% for field in form %}
+              <p>
+                {% if field.errors %}
+                <ul class="errorlist">
+                  {% for error in field.errors %}
+                  <li>{{ error }}</li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+                 {{ field.label_tag }}</br>
+                 {{ field }}
+              </p>
+              {% endfor %}
+              <input type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"value="Register" />
+              <p>Tienes una Cuenta? <a href="{%url 'user_login' %}">Login</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+{% endblock %}
+
